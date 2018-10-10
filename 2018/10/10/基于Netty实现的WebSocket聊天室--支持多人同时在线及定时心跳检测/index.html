@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://noshoes.tech">
-  <title>Hello World | 清风翻我书</title>
+  <title>基于Netty实现的WebSocket聊天室--支持多人同时在线及定时心跳检测 | 清风翻我书</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post.">
-<meta name="keywords" content="hexo">
+  <meta name="description" content="代码地址：https://github.com/lightTrace/chat-room-by-netty  项目简介  基于Netty实现的WebSocket聊天室，实现的功能如下：   支持昵称登录； 支持多人同时在线； 同步显示在线人数； 支持文字和表情的内容； 浏览器与服务器保持长连接，定时心跳检测；">
+<meta name="keywords" content="netty">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://noshoes.tech/2017/09/21/hello-world/index.html">
+<meta property="og:title" content="基于Netty实现的WebSocket聊天室--支持多人同时在线及定时心跳检测">
+<meta property="og:url" content="http://noshoes.tech/2018/10/10/基于Netty实现的WebSocket聊天室--支持多人同时在线及定时心跳检测/index.html">
 <meta property="og:site_name" content="清风翻我书">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post.">
+<meta property="og:description" content="代码地址：https://github.com/lightTrace/chat-room-by-netty  项目简介  基于Netty实现的WebSocket聊天室，实现的功能如下：   支持昵称登录； 支持多人同时在线； 同步显示在线人数； 支持文字和表情的内容； 浏览器与服务器保持长连接，定时心跳检测；">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-27T16:33:31.051Z">
+<meta property="og:image" content="https://img-blog.csdn.net/20181010140310269?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cmVTYW5k/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20181010142231574?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cmVTYW5k/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:updated_time" content="2018-10-10T14:46:16.235Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post.">
+<meta name="twitter:title" content="基于Netty实现的WebSocket聊天室--支持多人同时在线及定时心跳检测">
+<meta name="twitter:description" content="代码地址：https://github.com/lightTrace/chat-room-by-netty  项目简介  基于Netty实现的WebSocket聊天室，实现的功能如下：   支持昵称登录； 支持多人同时在线； 同步显示在线人数； 支持文字和表情的内容； 浏览器与服务器保持长连接，定时心跳检测；">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20181010140310269?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cmVTYW5k/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
   
     <link rel="alternative" href="/atom.xml" title="清风翻我书" type="application/atom+xml">
   
@@ -159,35 +162,48 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-基于Netty实现的WebSocket聊天室--支持多人同时在线及定时心跳检测" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      基于Netty实现的WebSocket聊天室--支持多人同时在线及定时心跳检测
     </h1>
   
 
         
-        <a href="/2017/09/21/hello-world/" class="archive-article-date">
-  	<time datetime="2017-09-21T04:12:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-21</time>
+        <a href="/2018/10/10/基于Netty实现的WebSocket聊天室--支持多人同时在线及定时心跳检测/" class="archive-article-date">
+  	<time datetime="2018-10-10T08:56:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post.<br><a id="more"></a><br> Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>代码地址：<a href="https://github.com/lightTrace/chat-room-by-netty" target="_blank" rel="noopener">https://github.com/lightTrace/chat-room-by-netty</a></p>
+<ol>
+<li>项目简介</li>
+</ol>
+<p>基于Netty实现的WebSocket聊天室，实现的功能如下： </p>
+<ul>
+<li>支持昵称登录；</li>
+<li>支持多人同时在线；</li>
+<li>同步显示在线人数；</li>
+<li>支持文字和表情的内容；</li>
+<li>浏览器与服务器保持长连接，定时心跳检测；   <a id="more"></a>
+</li>
+</ul>
+<ol start="2">
+<li>快速启动<br>将代码下载下来，导入idea为maven项目，启动HappyChatMain的server端<br>直接通过浏览器打开docs文件夹下的index.html，随便输入昵称登陆,开启两个浏览器窗口登陆，然后随便发送几条消息：<br><img src="https://img-blog.csdn.net/20181010140310269?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cmVTYW5k/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></li>
+</ol>
+<ol start="3">
+<li><p>项目简要流程概述</p>
+<p><img src="https://img-blog.csdn.net/20181010142231574?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cmVTYW5k/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></p>
+</li>
+</ol>
+<p>4.总结<br>整个小demo下来，确实感受到了netty开发socket的便捷与强大，逻辑也是十分的清晰易懂，后面应该还有更深入的东西等着我去学习。</p>
 
       
 
@@ -232,7 +248,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">netty</a>
         		</li>
       		
 		</ul>
@@ -299,7 +315,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://noshoes.tech/2017/09/21/hello-world/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://noshoes.tech/2018/10/10/基于Netty实现的WebSocket聊天室--支持多人同时在线及定时心跳检测/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -313,18 +329,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/10/01/蝴蝶如何飞的过沧海/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          蝴蝶如何飞的过沧海
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/09/21/基于Netty实现的WebSocket聊天室--支持多人同时在线及定时心跳检测/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">基于Netty实现的WebSocket聊天室--支持多人同时在线及定时心跳检测</div>
+    <a href="/2018/10/01/蝴蝶如何飞的过沧海/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">蝴蝶如何飞的过沧海</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -351,7 +358,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+                    目录，不存在的…
                     </div>
                 </span>
             </div>
@@ -463,11 +470,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">netty</a>
+                <a href="javascript:void(0)" class="js-tag color3">感悟</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">感悟</a>
+                <a href="javascript:void(0)" class="js-tag color1">netty</a>
               </li>
             
             <div class="clearfix"></div>
