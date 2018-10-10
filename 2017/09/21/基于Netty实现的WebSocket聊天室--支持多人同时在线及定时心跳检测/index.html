@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://noshoes.tech">
-  <title>关于我 | 清风翻我书</title>
+  <title>基于Netty实现的WebSocket聊天室--支持多人同时在线及定时心跳检测 | 清风翻我书</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="李为栋Java/go/容器/微服务工程师 邮箱:noshoestech@hotmail.com电话:13260582198github主页:https://github.com/lightTraceCSDN主页:https://blog.csdn.net/sureSand知乎主页:https://www.zhihu.com/people/li-wei-dong-35/activities">
-<meta name="keywords" content="云计算,Java,go,docker,kubernetes,大数据,程序人生">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于我">
-<meta property="og:url" content="http://noshoes.tech/about/index.html">
+  <meta name="description" content="代码地址：https://github.com/lightTrace/chat-room-by-netty  项目简介  基于Netty实现的WebSocket聊天室，实现的功能如下：   支持昵称登录； 支持多人同时在线； 同步显示在线人数； 支持文字和表情的内容； 浏览器与服务器保持长连接，定时心跳检测；">
+<meta name="keywords" content="netty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Netty实现的WebSocket聊天室--支持多人同时在线及定时心跳检测">
+<meta property="og:url" content="http://noshoes.tech/2017/09/21/基于Netty实现的WebSocket聊天室--支持多人同时在线及定时心跳检测/index.html">
 <meta property="og:site_name" content="清风翻我书">
-<meta property="og:description" content="李为栋Java/go/容器/微服务工程师 邮箱:noshoestech@hotmail.com电话:13260582198github主页:https://github.com/lightTraceCSDN主页:https://blog.csdn.net/sureSand知乎主页:https://www.zhihu.com/people/li-wei-dong-35/activities">
+<meta property="og:description" content="代码地址：https://github.com/lightTrace/chat-room-by-netty  项目简介  基于Netty实现的WebSocket聊天室，实现的功能如下：   支持昵称登录； 支持多人同时在线； 同步显示在线人数； 支持文字和表情的内容； 浏览器与服务器保持长连接，定时心跳检测；">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-26T14:05:09.436Z">
+<meta property="og:image" content="https://img-blog.csdn.net/20181010140310269?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cmVTYW5k/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20181010142231574?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cmVTYW5k/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:updated_time" content="2018-10-10T14:43:00.222Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于我">
-<meta name="twitter:description" content="李为栋Java/go/容器/微服务工程师 邮箱:noshoestech@hotmail.com电话:13260582198github主页:https://github.com/lightTraceCSDN主页:https://blog.csdn.net/sureSand知乎主页:https://www.zhihu.com/people/li-wei-dong-35/activities">
+<meta name="twitter:title" content="基于Netty实现的WebSocket聊天室--支持多人同时在线及定时心跳检测">
+<meta name="twitter:description" content="代码地址：https://github.com/lightTrace/chat-room-by-netty  项目简介  基于Netty实现的WebSocket聊天室，实现的功能如下：   支持昵称登录； 支持多人同时在线； 同步显示在线人数； 支持文字和表情的内容； 浏览器与服务器保持长连接，定时心跳检测；">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20181010140310269?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cmVTYW5k/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
   
     <link rel="alternative" href="/atom.xml" title="清风翻我书" type="application/atom+xml">
   
@@ -159,28 +162,48 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-基于Netty实现的WebSocket聊天室--支持多人同时在线及定时心跳检测" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      关于我
+      基于Netty实现的WebSocket聊天室--支持多人同时在线及定时心跳检测
     </h1>
   
 
         
-        <a href="/about/index.html" class="archive-article-date">
-  	<time datetime="2018-09-22T05:39:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-22</time>
+        <a href="/2017/09/21/基于Netty实现的WebSocket聊天室--支持多人同时在线及定时心跳检测/" class="archive-article-date">
+  	<time datetime="2017-09-21T04:12:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="李为栋"><a href="#李为栋" class="headerlink" title="李为栋"></a>李为栋</h2><p>Java/go/容器/微服务工程师</p>
-<p>邮箱:<a href="mailto:noshoestech@hotmail.com" target="_blank" rel="noopener">noshoestech@hotmail.com</a><br>电话:13260582198<br>github主页:<a href="https://github.com/lightTrace" target="_blank" rel="noopener">https://github.com/lightTrace</a><br>CSDN主页:<a href="https://blog.csdn.net/sureSand" target="_blank" rel="noopener">https://blog.csdn.net/sureSand</a><br>知乎主页:<a href="https://www.zhihu.com/people/li-wei-dong-35/activities" target="_blank" rel="noopener">https://www.zhihu.com/people/li-wei-dong-35/activities</a></p>
+        <p>代码地址：<a href="https://github.com/lightTrace/chat-room-by-netty" target="_blank" rel="noopener">https://github.com/lightTrace/chat-room-by-netty</a></p>
+<ol>
+<li>项目简介</li>
+</ol>
+<p>基于Netty实现的WebSocket聊天室，实现的功能如下： </p>
+<ul>
+<li>支持昵称登录；</li>
+<li>支持多人同时在线；</li>
+<li>同步显示在线人数；</li>
+<li>支持文字和表情的内容；</li>
+<li>浏览器与服务器保持长连接，定时心跳检测；   <a id="more"></a>
+</li>
+</ul>
+<ol start="2">
+<li>快速启动<br>将代码下载下来，导入idea为maven项目，启动HappyChatMain的server端<br>直接通过浏览器打开docs文件夹下的index.html，随便输入昵称登陆,开启两个浏览器窗口登陆，然后随便发送几条消息：<br><img src="https://img-blog.csdn.net/20181010140310269?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cmVTYW5k/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></li>
+</ol>
+<ol start="3">
+<li><p>项目简要流程概述</p>
+<p><img src="https://img-blog.csdn.net/20181010142231574?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cmVTYW5k/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></p>
+</li>
+</ol>
+<p>4.总结<br>整个小demo下来，确实感受到了netty开发socket的便捷与强大，逻辑也是十分的清晰易懂，后面应该还有更深入的东西等着我去学习。</p>
 
       
 
@@ -220,7 +243,29 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">netty</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术积累//" class="article-tag-list-link color5">技术积累</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -270,7 +315,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://noshoes.tech/about/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://noshoes.tech/2017/09/21/基于Netty实现的WebSocket聊天室--支持多人同时在线及定时心跳检测/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -282,6 +327,20 @@ var _hmt = _hmt || [];
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="/2017/09/21/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -303,7 +362,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#李为栋"><span class="toc-number">1.</span> <span class="toc-text">李为栋</span></a></li></ol>
+                    目录，不存在的…
                     </div>
                 </span>
             </div>
@@ -345,7 +404,7 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
