@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://noshoes.tech">
-  <title>什么时候的痛让我们觉得微服务好 | 清风翻我书</title>
+  <title>Tag: kafka | 清风翻我书</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="笔者参与过小型对并发要求不高的政务系统到目前互联网公司快速迭代的微服务系统开发，单体与微服务的架构的优缺点网上有很好的分析文章，我只谈谈自己什么时候真正能体会到微服务带来的的好处呢，就是当我们的系统业务越来越大的时候，然后每一次全部部署都会让你感到痛的时候，这个痛主要表现在两点：">
-<meta name="keywords" content="微服务">
-<meta property="og:type" content="article">
-<meta property="og:title" content="什么时候的痛让我们觉得微服务好">
-<meta property="og:url" content="http://noshoes.tech/2020/04/03/什么时候的痛让我们觉得微服务好/index.html">
+  <meta name="description" content="lightTrace的博客">
+<meta name="keywords" content="云计算,Java,go,docker,kubernetes,大数据,程序人生">
+<meta property="og:type" content="website">
+<meta property="og:title" content="清风翻我书">
+<meta property="og:url" content="http://noshoes.tech/tags/kafka/index.html">
 <meta property="og:site_name" content="清风翻我书">
-<meta property="og:description" content="笔者参与过小型对并发要求不高的政务系统到目前互联网公司快速迭代的微服务系统开发，单体与微服务的架构的优缺点网上有很好的分析文章，我只谈谈自己什么时候真正能体会到微服务带来的的好处呢，就是当我们的系统业务越来越大的时候，然后每一次全部部署都会让你感到痛的时候，这个痛主要表现在两点：">
+<meta property="og:description" content="lightTrace的博客">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-29T15:34:48.443Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="什么时候的痛让我们觉得微服务好">
-<meta name="twitter:description" content="笔者参与过小型对并发要求不高的政务系统到目前互联网公司快速迭代的微服务系统开发，单体与微服务的架构的优缺点网上有很好的分析文章，我只谈谈自己什么时候真正能体会到微服务带来的的好处呢，就是当我们的系统业务越来越大的时候，然后每一次全部部署都会让你感到痛的时候，这个痛主要表现在两点：">
+<meta name="twitter:title" content="清风翻我书">
+<meta name="twitter:description" content="lightTrace的博客">
   
     <link rel="alternative" href="/atom.xml" title="清风翻我书" type="application/atom+xml">
   
@@ -159,79 +158,48 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-什么时候的痛让我们觉得微服务好" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      什么时候的痛让我们觉得微服务好
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/06/09/那些不能使用kafka默认的配置有哪些？/" class="archive-article-date">
+  	<time datetime="2020-06-09T13:22:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-09</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/06/09/那些不能使用kafka默认的配置有哪些？/">那些不能使用kafka默认的配置有哪些？</a>
     </h1>
   
 
-        
-        <a href="/2020/04/03/什么时候的痛让我们觉得微服务好/" class="archive-article-date">
-  	<time datetime="2020-04-03T15:34:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>笔者参与过小型对并发要求不高的政务系统到目前互联网公司快速迭代的微服务系统开发，单体与微服务的架构的优缺点网上有很好的分析文章，我只谈谈自己什么时候真正能体会到微服务带来的的好处呢，就是当我们的系统业务越来越大的时候，然后每一次全部部署都会让你感到痛的时候，这个痛主要表现在两点：<br><a id="more"></a><br>1.不同功能的发布时间羁绊：功能A做好了可以被部署了，但是功能B还在开发中，而且功能A和功能B还有千丝万缕联系，还必须要让功能A等到功能B做好之后才能上线；功能C出了bug，要修复，但是发现必须要功能Y和Z也要跟着一起改，但是他们还有其他问题，依赖于A和B，这对于互联网的快速迭代来说是不能容忍的。<br>2.资源使用的浪费：比如有的应用一部分花费大量CPU，另一个部分做大量IO，这个应用一起部署，就需要每个机器既要配备大量CPU资源，也要准备好IO资源，多花很多钱，使用微服务能实现“精准打击”。<br>第一点是我作为开发者的痛，第二种是硬件资源它们的痛，微服务在某种程度上顾及了两者的感受，当然微服务不是银弹，并不能解决一切问题，甚至会带来更高的复杂度以及衍生问题，这里只是坐车无聊突然思考到的“自己认为的本质思考”，随笔记录下来😄。</p>
-<p><strong>管什么困难无穷，进一寸有一寸的欢喜。</strong></p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/img/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/img/weixin.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">微服务</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -244,126 +212,17 @@ var _hmt = _hmt || [];
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://noshoes.tech/2020/04/03/什么时候的痛让我们觉得微服务好/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/06/09/那些不能使用kafka默认的配置有哪些？/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          那些不能使用kafka默认的配置有哪些？
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/03/24/流量突增限流策略/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">流量突增限流策略</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    目录，不存在的…
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -386,9 +245,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: false,
