@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://noshoes.tech">
-  <title>Archives: 2020/3 | 清风翻我书</title>
+  <title>es加快查询的小套路 | 清风翻我书</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="lightTrace的博客">
-<meta name="keywords" content="云计算,Java,go,docker,kubernetes,大数据,程序人生">
-<meta property="og:type" content="website">
-<meta property="og:title" content="清风翻我书">
-<meta property="og:url" content="http://noshoes.tech/archives/2020/03/index.html">
+  <meta name="description" content="一. es查询速度与内存的关系当我们向es里面写数据的时候，实际上都会写到磁盘文件里面去，查询的时候，os会将磁盘文件里的数据自动缓存到file system cache中去。所以es的性能非常依赖机器的内存，当机器内存比较小的时候查询速度就会受到限制，如果我们给filesystem cache更多的内存，尽量让内存可以容纳所有的idx segment file索引数据文件，那么搜索的时候就基本是">
+<meta name="keywords" content="es查询优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es加快查询的小套路">
+<meta property="og:url" content="http://noshoes.tech/2020/06/13/es加快查询的小套路/index.html">
 <meta property="og:site_name" content="清风翻我书">
-<meta property="og:description" content="lightTrace的博客">
+<meta property="og:description" content="一. es查询速度与内存的关系当我们向es里面写数据的时候，实际上都会写到磁盘文件里面去，查询的时候，os会将磁盘文件里的数据自动缓存到file system cache中去。所以es的性能非常依赖机器的内存，当机器内存比较小的时候查询速度就会受到限制，如果我们给filesystem cache更多的内存，尽量让内存可以容纳所有的idx segment file索引数据文件，那么搜索的时候就基本是">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-06-13T15:28:06.689Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="清风翻我书">
-<meta name="twitter:description" content="lightTrace的博客">
+<meta name="twitter:title" content="es加快查询的小套路">
+<meta name="twitter:description" content="一. es查询速度与内存的关系当我们向es里面写数据的时候，实际上都会写到磁盘文件里面去，查询的时候，os会将磁盘文件里的数据自动缓存到file system cache中去。所以es的性能非常依赖机器的内存，当机器内存比较小的时候查询速度就会受到限制，如果我们给filesystem cache更多的内存，尽量让内存可以容纳所有的idx segment file索引数据文件，那么搜索的时候就基本是">
   
     <link rel="alternative" href="/atom.xml" title="清风翻我书" type="application/atom+xml">
   
@@ -158,48 +159,84 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-es加快查询的小套路" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/24/流量突增限流策略/" class="archive-article-date">
-  	<time datetime="2020-03-24T01:42:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/24/流量突增限流策略/">流量突增限流策略</a>
+    <h1 class="article-title" itemprop="name">
+      es加快查询的小套路
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/06/13/es加快查询的小套路/" class="archive-article-date">
+  	<time datetime="2020-06-13T15:25:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一-es查询速度与内存的关系"><a href="#一-es查询速度与内存的关系" class="headerlink" title="一. es查询速度与内存的关系"></a>一. es查询速度与内存的关系</h2><p>当我们向es里面写数据的时候，实际上都会写到磁盘文件里面去，查询的时候，os会将磁盘文件里的数据自动缓存到file system cache中去。所以es的性能非常依赖机器的内存，当机器内存比较小的时候查询速度就会受到限制，如果我们给filesystem cache更多的内存，尽量让内存可以容纳所有的idx segment file索引数据文件，那么搜索的时候就基本是在走内存的，少了从磁盘随机io到内存中，查询速度立马变成ms级别。<br><a id="more"></a> </p>
+<h2 id="二-没有银弹的优化手段"><a href="#二-没有银弹的优化手段" class="headerlink" title="二. 没有银弹的优化手段"></a>二. 没有银弹的优化手段</h2><p>所以从上面es查询速度与内存的关系我们知道，其实es性能优化是没有什么银弹的，就是不能期待着随手调一个参数就可以万能对应所有性能慢 的场景，但是可以通过一些合理的小技巧来加快es的查询速度。</p>
+<h4 id="1-不必缓存所有的字段信息"><a href="#1-不必缓存所有的字段信息" class="headerlink" title="1. 不必缓存所有的字段信息"></a>1. 不必缓存所有的字段信息</h4><p>比如用户信息可能有很多字段，我们只会根据name，age去进行查询，那么我们没必要把其余的字段也保存到es，我们可以只写入name，age，存入es，这样使用filesystem cache内存就大大减少。然后其它字段用doc id关联存在hbase里面，hbase的特点适用于海量数据的在线存储，就是对hbase可以写入海量数据，但是不要做复杂的搜索，做一些简单的根据id搜索就很快，所以查询es的我们根据name，age查询es的doc id，再去hbase根据doc id里面查询所有信息。<br>之前如果整条消息走的es的磁盘查询到缓存再返回可能需要几秒，但是只根据name或者age查询doc id走的是filesystem cache缓存 + 根据doc id查询hbase里面所有的信息，时间大概就在几十毫秒。</p>
+<h4 id="2-数据预热"><a href="#2-数据预热" class="headerlink" title="2. 数据预热"></a>2. 数据预热</h4><p>比如在电商系统里面，可以将平时查看多的商品，提前用后台程序主动去访问es里面这些数据，这样数据就进入了filesystem cache里面，用户再去访问的时候性能会好很多。<br>@[TOC] #### 3.冷热分离<br>es可以做类似于mysql中的水平拆分，就是说将访问很频繁的热数据单独写入一个索引，将反问很少频率很低的大量数据单独写入一个索引。这样预热后让他们留在filesystem cache，不会被冷数据刷掉。</p>
+<h4 id="3-文档模型的合理设计"><a href="#3-文档模型的合理设计" class="headerlink" title="3. 文档模型的合理设计"></a>3. 文档模型的合理设计</h4><p>因为es这种nosql是直接聚合数据的，比如订单信息文档，可能就有用户的大部分信息，也有商品的信息，还有交易的信息，这样设计是因为es里面对复杂的关联查询不友好。<br>所以文档模型设计是非常重要的，很多操作不要等到在搜索的时候才去想执行那些复杂关联查询的骚操作，而是在写的时候直接关联好写进去。</p>
+<h4 id="4-坑爹的深度分页"><a href="#4-坑爹的深度分页" class="headerlink" title="4.坑爹的深度分页"></a>4.坑爹的深度分页</h4><p>因为es的分布式属性，比如我要查第80页的10条数据，假如我们有10分片，不可能说从各个分片就查1条数据，而是需要从每个分片都查询800条数据过来，然后根据查询需求进行排序筛选等操作，翻的页越多，每个分片返回的数据就越多，所以如果翻前几页的时候可能很快就出来了，翻的页多了，就越来越慢了。<br>但是可以使用scroll api进行一个下拉分页，就是类似于微博，向下刷出来一页一页的数据。</p>
+<p><strong>管什么困难无穷，进一寸有一寸的欢喜。</strong></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">限流</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">es查询优化</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -212,17 +249,117 @@ var _hmt = _hmt || [];
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://noshoes.tech/2020/06/13/es加快查询的小套路/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/06/09/那些不能使用kafka默认的配置有哪些？/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">那些不能使用kafka默认的配置有哪些？</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-es查询速度与内存的关系"><span class="toc-number">1.</span> <span class="toc-text">一. es查询速度与内存的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-没有银弹的优化手段"><span class="toc-number">2.</span> <span class="toc-text">二. 没有银弹的优化手段</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-不必缓存所有的字段信息"><span class="toc-number">2.0.1.</span> <span class="toc-text">1. 不必缓存所有的字段信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-数据预热"><span class="toc-number">2.0.2.</span> <span class="toc-text">2. 数据预热</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-文档模型的合理设计"><span class="toc-number">2.0.3.</span> <span class="toc-text">3. 文档模型的合理设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-坑爹的深度分页"><span class="toc-number">2.0.4.</span> <span class="toc-text">4.坑爹的深度分页</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -245,8 +382,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
