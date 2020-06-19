@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://noshoes.tech">
-  <title>关于我 | 清风翻我书</title>
+  <title>kafka consumer group设计的巧妙及讨厌的rebalance | 清风翻我书</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="李为栋Java/go/容器/微服务工程师 邮箱:noshoestech@hotmail.com电话:13260582198github主页:https://github.com/lightTraceCSDN主页:https://blog.csdn.net/sureSand知乎主页:https://www.zhihu.com/people/li-wei-dong-35/activities">
-<meta name="keywords" content="云计算,Java,go,docker,kubernetes,大数据,程序人生">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于我">
-<meta property="og:url" content="http://noshoes.tech/about/index.html">
+  <meta name="description" content="一.consumer group的特性 consumer group下可能有一个或多个consumer实例 group ID是一个字符串，在一个kafka集群中，它标识唯一的consumer group 一个consumer group下面的实例只能消费一个主题的分区，当然这个分区也能被其它consumer group消费">
+<meta name="keywords" content="kafka">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kafka consumer group设计的巧妙及讨厌的rebalance">
+<meta property="og:url" content="http://noshoes.tech/2020/06/19/kafka consumer group设计的巧妙及讨厌的rebalance/index.html">
 <meta property="og:site_name" content="清风翻我书">
-<meta property="og:description" content="李为栋Java/go/容器/微服务工程师 邮箱:noshoestech@hotmail.com电话:13260582198github主页:https://github.com/lightTraceCSDN主页:https://blog.csdn.net/sureSand知乎主页:https://www.zhihu.com/people/li-wei-dong-35/activities">
+<meta property="og:description" content="一.consumer group的特性 consumer group下可能有一个或多个consumer实例 group ID是一个字符串，在一个kafka集群中，它标识唯一的consumer group 一个consumer group下面的实例只能消费一个主题的分区，当然这个分区也能被其它consumer group消费">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-26T14:05:09.436Z">
+<meta property="og:updated_time" content="2020-06-19T15:49:31.120Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于我">
-<meta name="twitter:description" content="李为栋Java/go/容器/微服务工程师 邮箱:noshoestech@hotmail.com电话:13260582198github主页:https://github.com/lightTraceCSDN主页:https://blog.csdn.net/sureSand知乎主页:https://www.zhihu.com/people/li-wei-dong-35/activities">
+<meta name="twitter:title" content="kafka consumer group设计的巧妙及讨厌的rebalance">
+<meta name="twitter:description" content="一.consumer group的特性 consumer group下可能有一个或多个consumer实例 group ID是一个字符串，在一个kafka集群中，它标识唯一的consumer group 一个consumer group下面的实例只能消费一个主题的分区，当然这个分区也能被其它consumer group消费">
   
     <link rel="alternative" href="/atom.xml" title="清风翻我书" type="application/atom+xml">
   
@@ -159,28 +159,33 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-kafka consumer group设计的巧妙及讨厌的rebalance" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      关于我
+      kafka consumer group设计的巧妙及讨厌的rebalance
     </h1>
   
 
         
-        <a href="/about/index.html" class="archive-article-date">
-  	<time datetime="2018-09-22T05:39:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-22</time>
+        <a href="/2020/06/19/kafka consumer group设计的巧妙及讨厌的rebalance/" class="archive-article-date">
+  	<time datetime="2020-06-19T15:48:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="李为栋"><a href="#李为栋" class="headerlink" title="李为栋"></a>李为栋</h2><p>Java/go/容器/微服务工程师</p>
-<p>邮箱:<a href="mailto:noshoestech@hotmail.com" target="_blank" rel="noopener">noshoestech@hotmail.com</a><br>电话:13260582198<br>github主页:<a href="https://github.com/lightTrace" target="_blank" rel="noopener">https://github.com/lightTrace</a><br>CSDN主页:<a href="https://blog.csdn.net/sureSand" target="_blank" rel="noopener">https://blog.csdn.net/sureSand</a><br>知乎主页:<a href="https://www.zhihu.com/people/li-wei-dong-35/activities" target="_blank" rel="noopener">https://www.zhihu.com/people/li-wei-dong-35/activities</a></p>
+        <h3 id="一-consumer-group的特性"><a href="#一-consumer-group的特性" class="headerlink" title="一.consumer group的特性"></a>一.consumer group的特性</h3><ul>
+<li>consumer group下可能有一个或多个consumer实例</li>
+<li>group ID是一个字符串，在一个kafka集群中，它标识唯一的consumer group</li>
+<li>一个consumer group下面的实例只能消费一个主题的分区，当然这个分区也能被其它consumer group消费<a id="more"></a> 
+</li>
+</ul>
+<p><strong>管什么困难无穷，进一寸有一寸的欢喜。</strong></p>
 
       
 
@@ -220,7 +225,29 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术积累//" class="article-tag-list-link color5">技术积累</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -270,7 +297,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://noshoes.tech/about/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://noshoes.tech/2020/06/19/kafka consumer group设计的巧妙及讨厌的rebalance/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -282,6 +309,16 @@ var _hmt = _hmt || [];
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/13/es加快查询的小套路/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">es加快查询的小套路</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -303,7 +340,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#李为栋"><span class="toc-number">1.</span> <span class="toc-text">李为栋</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-consumer-group的特性"><span class="toc-number">1.</span> <span class="toc-text">一.consumer group的特性</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -345,7 +382,7 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

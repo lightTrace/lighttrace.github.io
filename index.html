@@ -160,6 +160,96 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-kafka consumer group设计的巧妙及讨厌的rebalance" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/19/kafka consumer group设计的巧妙及讨厌的rebalance/">kafka consumer group设计的巧妙及讨厌的rebalance</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/19/kafka consumer group设计的巧妙及讨厌的rebalance/" class="archive-article-date">
+  	<time datetime="2020-06-19T15:48:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一-consumer-group的特性"><a href="#一-consumer-group的特性" class="headerlink" title="一.consumer group的特性"></a>一.consumer group的特性</h3><ul>
+<li>consumer group下可能有一个或多个consumer实例</li>
+<li>group ID是一个字符串，在一个kafka集群中，它标识唯一的consumer group</li>
+<li>一个consumer group下面的实例只能消费一个主题的分区，当然这个分区也能被其它consumer group消费
+        
+          <a class="article-more-a" href="/2020/06/19/kafka consumer group设计的巧妙及讨厌的rebalance/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术积累//" class="article-tag-list-link color5">技术积累</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/19/kafka consumer group设计的巧妙及讨厌的rebalance/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-es加快查询的小套路" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -866,11 +956,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">es查询优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">微服务</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">es查询优化</a>
+                <a href="javascript:void(0)" class="js-tag color1">kafka</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -882,15 +976,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kafka</a>
+                <a href="javascript:void(0)" class="js-tag color3">感悟</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">netty</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">感悟</a>
               </li>
             
             <div class="clearfix"></div>
